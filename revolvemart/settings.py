@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["revolvemart-backend.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["134.122.115.65", "localhost"]
 
 
 # Application definition
