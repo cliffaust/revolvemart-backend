@@ -113,15 +113,24 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "de1v6seqft0nia",
-        "HOST": "ec2-3-214-136-47.compute-1.amazonaws.com",
-        "PORT": 5432,
-        "USER": 'aepdvbtipivvki',
-        "PASSWORD": "fe1845eee317b7a8bd7b9ce00c583be421e77a60760bb61e07fc3f90ceb6822e"
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'revolvemart',
+            'USER': 'revolvemart_admin',
+            'PASSWORD': 'clifford2018',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
 }
 
 
