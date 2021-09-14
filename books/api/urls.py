@@ -1,0 +1,90 @@
+from django.urls import path
+from .views import (
+    BookCreateView,
+    BookListViews,
+    BookDetailView,
+    BookImageCreateView,
+    BookImageDetailView,
+    BookImageListView,
+    BookReviewCreateView,
+    BookReviewDetailView,
+    BookReviewListView,
+    UserBookListViews,
+    ShippingAddressCreateView,
+    ShippingAddressDetailView,
+    ShippingAddressListView,
+    UserOrderListView,
+    UserOrderDetailView,
+    CartItemAPIView,
+    CartDetailView,
+    OrderCreateView,
+    CartListView,
+    BookJustArrivedListViews,
+    BookUderPriceListViews,
+    BookRecommendationListViews,
+    ShippingNoteView,
+)
+
+urlpatterns = [
+    path("books/", BookListViews.as_view(), name="books"),
+    path("books/recommendations/<title>/", BookRecommendationListViews.as_view(), name="recommended-books"),
+    path("books/under-price/", BookUderPriceListViews.as_view(), name="books"),
+    path("books/just-arrived/", BookJustArrivedListViews.as_view(), name="books-just-arrived"),
+    path("user-books/", UserBookListViews.as_view(), name="books"),
+    path("create-book/", BookCreateView.as_view(), name="create-book"),
+    path("books/<slug>/", BookDetailView.as_view(), name="book-detail"),
+    path(
+        "books/<book_slug>/book-images/",
+        BookImageListView.as_view(),
+        name="book-images",
+    ),
+    path("create-address/", ShippingAddressCreateView.as_view(), name="create-address"),
+    path("user-address/<int:pk>/", ShippingAddressDetailView.as_view(), name="user-detail-address"),
+    path("user-address/", ShippingAddressListView.as_view(), name="user-address"),
+    path("shipping-note/", ShippingNoteView.as_view(), name="shipping-note"),
+    path(
+        "books/<book_slug>/address/<int:address_pk>/add-to-order/",
+        OrderCreateView.as_view(),
+        name="create-order-item",
+    ),
+    
+    path("books/<book_slug>/add-to-cart/", CartItemAPIView.as_view(), name="user-cart"),
+    path("user-orders/", UserOrderListView.as_view(), name="user-orders"),
+    path(
+        "user-cart/<int:pk>/",
+        CartDetailView.as_view(),
+        name="detail-cart-item",
+    ),
+    
+    path("user-cart/", CartListView.as_view(), name="user-cart-items"),
+    path(
+        "user-orders/<int:pk>/",
+        UserOrderDetailView.as_view(),
+        name="user-order-detail",
+    ),
+    path(
+        "books/<book_slug>/book-images/<int:pk>/",
+        BookImageDetailView.as_view(),
+        name="book-image",
+    ),
+    path(
+        "books/<book_slug>/create-book-image/",
+        BookImageCreateView.as_view(),
+        name="create-book-image",
+    ),
+    path(
+        "books/<book_slug>/reviews/",
+        BookReviewListView.as_view(),
+        name="book-list-reviews",
+    ),
+    path(
+        "books/<book_slug>/reviews/<int:pk>/",
+        BookReviewDetailView.as_view(),
+        name="book-review",
+    ),
+    path(
+        "books/<book_slug>/create-review/",
+        BookReviewCreateView.as_view(),
+        name="create-book-review",
+    ),
+]
