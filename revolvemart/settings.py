@@ -26,7 +26,7 @@ SECRET_KEY = "k30J0tkbidtppRmLKoZQqFLeZ7hvDLS6rHo6KMBsrBw"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["134.122.115.65", "localhost"]
+ALLOWED_HOSTS = ["134.122.115.65", "localhost", "api.revolvemart.com"]
 
 
 # Application definition
